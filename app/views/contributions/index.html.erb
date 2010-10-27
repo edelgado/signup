@@ -1,0 +1,30 @@
+<% title "Contributions" %>
+
+<table>
+  <tr>
+	<th>Event</th>
+	<th>Item</th>
+	<th>Qty</th>
+	<th>Created At</th>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+  </tr>
+
+<% @contributions.each do |contribution| %>
+logger.debug(contribution)
+  <tr>
+	<td><%= contribution.item.event.name %></td>
+	<td><%= contribution.item.name %></td>
+	<td><%= contribution.quantity %></td>
+	<td><%= contribution.created_at %></td>
+    <td><%= link_to 'Show', contribution %></td>
+    <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+    <td><%= link_to 'Destroy', contribution, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New contribution', new_contribution_path %>

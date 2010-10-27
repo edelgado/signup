@@ -1,0 +1,60 @@
+<% content_for(:head) do %>
+<%= javascript_include_tag 'jquery-1.3.2.min' %>
+<%= javascript_include_tag 'item_builder' %>
+<% end %>
+
+<% title "Edit Event", false %>
+<h1>Edit Event</h1>
+
+<% form_for setup_event(@event) do |event_form| %>
+  <%= event_form.error_messages %>
+  <p>
+	<%= event_form.label :title %>
+	<%= event_form.text_field :title %>
+  </p>
+  <p>
+	<%= event_form.label :description %>
+	<%= event_form.text_area :description %>
+  </p>
+  <p>
+	<%= event_form.label :date %>
+	<%= event_form.datetime_select :date %>
+  </p>
+  <h3>Items</h3>
+  <% event_form.fields_for :items do |item_form| %>
+  <p>
+    <%= item_form.label :name %>
+    <%= item_form.text_field :name %>
+
+	<%= item_form.label :quantity %>
+    <%= item_form.text_field :quantity %>
+
+	<%= item_form.label :accepts_note %>
+    <%= item_form.check_box :accepts_note %>
+
+    <% unless item_form.object.new_record? %>
+      <%= item_form.check_box '_delete' %>
+      <%= item_form.label '_delete', 'Remove' %>
+    <% end %>
+  </p>
+  <% end %>
+
+  <div id="items">
+  <%# event_form.fields_for :items_attributes do |item_form| %>
+  <!-- <p> -->
+    <%#= item_form.label :name %>
+    <%#= item_form.text_field :name, {:name => "event[items_attributes][new_#{@event.items.count}][name]" } %>
+
+	<%#= item_form.label :quantity %>
+    <%#= item_form.text_field :quantity, {:name => "event[items_attributes][new_#{@event.items.count}][quantity]"} %>
+  <!-- </p> -->
+  <%# end %>
+  </div>
+  <a href="" class="add_item">Add Item</a>
+  <p>
+    <%= event_form.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @event %> |
+<%= link_to 'Back', events_path %>

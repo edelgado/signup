@@ -1,0 +1,80 @@
+<% title "#{@event.title}", false %>
+
+<% content_for(:head) do %>
+<%= javascript_include_tag 'jquery-1.3.2.min' %>
+<%= javascript_include_tag 'item_count' %>
+<% end %>
+
+<% form_for @event do |f| -%>
+  <%= f.error_messages :header_message => "Found #{pluralize(@event.errors.count, 'issue')} with your request", :message => 'Please review the following items:' %>
+<% end -%>
+
+<h1><%= @event.title %></h1>
+<strong><%= @event.date.strftime('%A %B %d, %Y @ %I:%M %p') %></strong>
+<div class="message">
+	<%= @event.description %>
+</div>
+
+<h3>Needed Items</h3>
+<p>Click <%= image_tag("plus.png", :class => "itemIcon") %> to add something to your list, or type a number in the box.</p>
+
+<% form_tag :controller => 'signup', :action => 'create' do -%>
+
+<div class="items">	
+	<% @event.items.each do |item| -%>
+	<% 
+		if @selections.has_key?(item.id.to_s) 
+			field_val = @selections[item.id.to_s][:quantity]
+			note_val  = @selections[item.id.to_s][:note]
+			#note_div_display_css = 'inline'
+		else
+			field_val =  note_val = ''
+			#note_div_display_css = 'none'
+		end
+		if field_val.to_i > 0
+			note_div_display_css = 'block'
+			minus_img_display_css = 'inline'
+		else
+			note_div_display_css = 'none'
+			minus_img_display_css = 'none'
+		end
+		if item.remaining_count == 0
+			plus_img_name = 'plus-muted.png'
+			input_box_disabled = 'disabled'
+			item_css_class = 'fulfilled'
+		else
+			plus_img_name = 'plus.png'
+			input_box_disabled = false
+			item_css_class = ''
+		end
+	%>
+	<div class="item" id="item_<%= item.id %>_<%= item.remaining_count %>_<%= item.quantity %>">
+		<%= image_tag(plus_img_name, :class => "itemIcon add") %> 
+		<%= text_field_tag "contributions[#{item.id}][quantity]", field_val, { :size => 1, :disabled => input_box_disabled }  %> 
+		<%= image_tag("minus-muted.png", :class => "itemIcon sub", :style => "display: #{minus_img_display_css}") %>
+		<span class="<%= item_css_class %>"><%= item.name.pluralize %></span>
+		(<%= "#{item.remaining_count} out of #{item.quantity} still needed" %>)
+		<% if item.accepts_note -%>
+		<div id="<%= item.id %>_note" style="display: <%= note_div_display_css %>; margin: 5px 0px 0px 78px; ">
+		Tell the organizer about your <%= item.name.downcase %>(s): <%= text_field_tag "contributions[#{item.id}][note]", note_val %>
+		</div>
+		<% end -%>
+	</div>
+	<% end -%>
+</div>
+
+<h3>Your Information</h3>
+<p>
+    <%= label_tag "contributor_name", "Name" %>
+	<%= text_field_tag "contributor[name]", @contributor.name %>
+</p>
+<p>
+    <%= label_tag "contributor_email", "Email" %>
+	<%= text_field_tag "contributor[email]", @contributor.email %>
+</p>
+<p>
+	<%#= hidden_field_tag "event[id]", @event.id %>
+	<%= submit_tag "Sign me up" %>
+</p>
+
+<% end -%>

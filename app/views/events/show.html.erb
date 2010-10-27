@@ -1,0 +1,13 @@
+<h2><%= @event.title %></h2>
+<h3><%= @event.date %></h3>
+<p><%= @event.description %></p>
+<h3>Needed Items</h3>
+<ul>
+<% @items.each do |item| %>
+<li> <%= item.quantity %> <%= item.name %> </li>
+<% end %>
+</ul>
+<p>Share this event by giving out this link: <a href="http://signup.local/signup/<%= @event.key%>">http://signup.local/signup/<%= @event.key%></a></p>
+<p>Download a <%= link_to 'CSV', event_path(@event, :format => 'csv') %> file of the data.</p>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

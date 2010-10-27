@@ -1,0 +1,13 @@
+<%= @event.title %> Signup Confirmation
+
+Hi <%= @contributor.name %>,
+
+You have signed up for:
+
+<% @items.each do |msg| -%>
+* <%= msg%>
+<% end -%>
+
+As a reminder, the date of this event is <%= @event.date.strftime('%A %B %d, %Y @ %I:%M %p') %>.
+
+Thanks!

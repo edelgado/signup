@@ -1,0 +1,13 @@
+<%=q 'Item' %>,<%=q 'Name' %>,<%=q 'Email' %>,<%=q 'Note' %>,<%=q 'Timestamp' %>
+<% @event.items.each do |item| -%>
+<% counter = 0 -%>
+<% item.contributions.each do |c| -%>
+<% c.quantity.times do -%>
+<%=q item.name %>,<%=q c.contributor.name%>,<%=q c.contributor.email%>,<%=q c.note%>,<%=q c.created_at%>
+<% end -%>
+<% counter += c.quantity -%>
+<% end -%>
+<% (item.quantity - counter).times do -%>
+<%=q item.name %>,<%=q ''%>,<%=q ''%>,<%=q ''%>,<%=q ''%>
+<% end -%>
+<% end -%>

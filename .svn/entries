@@ -1,0 +1,129 @@
+10
+
+dir
+14
+svn+slice://planetenrique.com/home/dexter/repository/signup/trunk
+svn+slice://planetenrique.com/home/dexter/repository/signup
+
+
+
+2009-11-06T00:35:18.836181Z
+13
+wayne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4ac4e883-0bc5-4c0c-baed-c525cadf1a14
+
+test
+dir
+
+app
+dir
+
+tmp
+dir
+
+log
+dir
+
+Rakefile
+file
+
+
+
+
+2009-11-03T20:14:23.000000Z
+17f2f134da4cd31ea095d5868ca89e86
+2009-11-03T20:09:39.383402Z
+2
+dexter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+307
+
+script
+dir
+
+config
+dir
+
+db
+dir
+
+doc
+dir
+
+lib
+dir
+
+vendor
+dir
+
+README
+file
+
+
+
+
+2009-11-09T13:58:17.000000Z
+26a9ae70b095f61d1ed370ed4e282b8c
+2009-11-06T00:35:18.836181Z
+13
+wayne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10012
+
+public
+dir
+

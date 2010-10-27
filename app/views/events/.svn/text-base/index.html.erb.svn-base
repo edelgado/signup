@@ -1,0 +1,21 @@
+<% title "Events" %>
+
+<table>
+  <tr>
+	<th>Name</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+	<td><%= event.title %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+	<td><%= link_to 'Export', event_path(event, :format => 'csv') %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', new_event_path %>

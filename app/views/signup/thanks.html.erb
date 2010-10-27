@@ -1,0 +1,29 @@
+<% title "#{@event.title}", false %>
+
+<h1><%=h @event.title %></h1>
+
+<div class="message">
+	<%= @event.description %>
+</div>
+
+<% unless @messages[:general].empty? -%>
+<h3>Thanks!</h3>
+<p>You have successfully signed up for:</p>
+<ul>
+	<% @messages[:general].each do |m| -%>
+	<li><%= m %></li>
+	<% end -%>
+</ul>
+<% end -%>
+
+<% unless @messages[:warning].empty? -%>
+<h3>Notes</h3>
+<p>Please note:</p>
+<ul>
+	<% @messages[:warning].each do |m| -%>
+	<li><%=h m %></li>
+	<% end -%>
+</ul>
+<% end -%>
+
+<%= link_to "Back", :controller => "signup", :action => "index", :id => @event.key %>
