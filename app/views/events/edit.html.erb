@@ -3,7 +3,7 @@
 <%= javascript_include_tag 'item_builder' %>
 <% end %>
 
-<% title "Edit Event", false %>
+<% title "Editing #{@event.title}", false %>
 <h1>Edit Event</h1>
 
 <% form_for setup_event(@event) do |event_form| %>

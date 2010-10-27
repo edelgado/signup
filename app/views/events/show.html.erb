@@ -1,3 +1,4 @@
+<% title @event.title + ' Details', false %>
 <h2><%= @event.title %></h2>
 <h3><%= @event.date %></h3>
 <p><%= @event.description %></p>
@@ -7,7 +8,7 @@
 <li> <%= item.quantity %> <%= item.name %> </li>
 <% end %>
 </ul>
-<p>Share this event by giving out this link: <a href="http://signup.local/signup/<%= @event.key%>">http://signup.local/signup/<%= @event.key%></a></p>
+<p>Share this event by giving out this link: <a href="http://<%= request.env['HTTP_HOST']%>/signup/<%= @event.key%>">http://<%= request.env['HTTP_HOST']%>/signup/<%= @event.key%></a></p>
 <p>Download a <%= link_to 'CSV', event_path(@event, :format => 'csv') %> file of the data.</p>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
