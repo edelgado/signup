@@ -1,7 +1,7 @@
 <% title @event.title + ' Details', false %>
 <h2><%= @event.title %></h2>
-<h3><%= @event.date %></h3>
-<p><%= @event.description %></p>
+<h3><%= @event.date && @event.date.strftime('%A %B %d, %Y @ %I:%M %p') %></h3>
+<p><%= @event.description && RedCloth.new(@event.description).to_html %></p>
 <h3>Needed Items</h3>
 <ul>
 <% @items.each do |item| %>

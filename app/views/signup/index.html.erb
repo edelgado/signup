@@ -10,9 +10,9 @@
 <% end -%>
 
 <h1><%= @event.title %></h1>
-<strong><%= @event.date.strftime('%A %B %d, %Y @ %I:%M %p') %></strong>
+<strong><%= @event.date && @event.date.strftime('%A %B %d, %Y @ %I:%M %p') %></strong>
 <div class="message">
-	<%= @event.description %>
+	<%= @event.description && RedCloth.new(@event.description).to_html %>
 </div>
 
 <h3>Needed Items</h3>

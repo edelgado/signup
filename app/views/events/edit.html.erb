@@ -4,7 +4,7 @@
 <% end %>
 
 <% title "Editing #{@event.title}", false %>
-<h1>Edit Event</h1>
+<h1>Editing <%= @event.title %></h1>
 
 <% form_for setup_event(@event) do |event_form| %>
   <%= event_form.error_messages %>
