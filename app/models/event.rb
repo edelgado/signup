@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :organizer
-  has_many :items, :dependent => :destroy, :order => '`order` ASC'
+  has_many :items, :dependent => :destroy#, :order => '`order` ASC'
   has_many :contributions, :through => :items
   
   accepts_nested_attributes_for :items, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
