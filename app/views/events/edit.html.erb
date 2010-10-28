@@ -35,7 +35,7 @@
 	<%= item_form.label :accepts_note %>
     <%= item_form.check_box :accepts_note %>
 
-	<%= item_form.hidden_field :order %>
+	<%= item_form.hidden_field :sorting_order %>
 
     <% unless item_form.object.new_record? %>
       <%= item_form.check_box '_delete' %>
