@@ -1,6 +1,8 @@
 <% content_for(:head) do %>
+<%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.7.2.custom', :cache => true %>
 <%= javascript_include_tag 'jquery-1.3.2.min' %>
 <%= javascript_include_tag 'item_builder' %>
+<%= javascript_include_tag 'jquery-ui-1.7.2.custom.min' %>
 <% end %>
 
 <% title "Editing #{@event.title}", false %>
@@ -21,8 +23,9 @@
 	<%= event_form.datetime_select :date %>
   </p>
   <h3>Items</h3>
+  <div id="items">
   <% event_form.fields_for :items do |item_form| %>
-  <p>
+  <p><%= image_tag("drag-v.gif", :style => "cursor: move") %>
     <%= item_form.label :name %>
     <%= item_form.text_field :name %>
 
@@ -32,23 +35,14 @@
 	<%= item_form.label :accepts_note %>
     <%= item_form.check_box :accepts_note %>
 
+	<%= item_form.hidden_field :order %>
+
     <% unless item_form.object.new_record? %>
       <%= item_form.check_box '_delete' %>
       <%= item_form.label '_delete', 'Remove' %>
     <% end %>
   </p>
   <% end %>
-
-  <div id="items">
-  <%# event_form.fields_for :items_attributes do |item_form| %>
-  <!-- <p> -->
-    <%#= item_form.label :name %>
-    <%#= item_form.text_field :name, {:name => "event[items_attributes][new_#{@event.items.count}][name]" } %>
-
-	<%#= item_form.label :quantity %>
-    <%#= item_form.text_field :quantity, {:name => "event[items_attributes][new_#{@event.items.count}][quantity]"} %>
-  <!-- </p> -->
-  <%# end %>
   </div>
   <a href="" class="add_item">Add Item</a>
   <p>

@@ -42,5 +42,20 @@ $(function(){
 			}
 		}
 		
-	});		
+	});
+	
+	$("input[id$='_quantity']").keyup(function(){	
+	    //alert($(this).val())
+	    var needed = $(this).parent().attr('id').split('_')[2];
+	    var entered = parseInt($(this).val());
+        if (entered > needed) {
+            $(this).val(needed);
+        } 
+	    if (parseInt($(this).val()) > 0) {
+	        $(this).siblings("div[id$=note]").slideDown();
+	    } else {
+	        $(this).siblings("div[id$=note]").slideUp();
+	    }
+	    
+    });
 });
