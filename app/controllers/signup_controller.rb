@@ -68,7 +68,7 @@ class SignupController < ApplicationController
             if @item.remaining_count > 0
               if @item.remaining_count < data[:quantity].to_i
                 qty = @item.remaining_count
-                tmp = "You signed up for #{data[:quantity]} #{@item.name.pluralize}, but only #{qty} were needed by the time you pressed submit, so you are only responsible for #{qty} #{@item.name.pluralize}"
+                tmp = "You signed up for #{data[:quantity]} #{@item.name.pluralize}, but only #{qty} were needed by the time you sent your request, so you are only responsible for #{qty} #{@item.name.pluralize}"
                 tmp += " (Note to organizer: <em>#{data[:note]})</em>" if data.has_key?(:note)
                 @messages[:warning] << tmp
               else
