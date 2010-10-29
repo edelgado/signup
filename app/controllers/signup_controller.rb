@@ -74,7 +74,7 @@ class SignupController < ApplicationController
               else
                 qty = data[:quantity]
               end
-              #@item.contributions << Contribution.new(:contributor => @contributor, :quantity => qty, :note => data[:note])
+              @item.contributions << Contribution.new(:contributor => @contributor, :quantity => qty, :note => data[:note])
               tmp = "#{qty} #{@item.name.pluralize}"
               tmp += " (Note to organizer: <em>#{data[:note]})</em>" if data.has_key?(:note)
               @messages[:general] << tmp
