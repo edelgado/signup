@@ -5,10 +5,11 @@ class Item < ActiveRecord::Base
   
   def remaining_count
     count = 0
+    qty = self.quantity || 0
     self.contributions.each do |c|
       count += c.quantity
     end
-    self.quantity - count
+    qty - count
   end
   
   def contribution_count
