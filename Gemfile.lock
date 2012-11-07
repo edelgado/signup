@@ -32,7 +32,6 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.2)
-  bundler (= 1.2.0.rc.2)
   hoptoad_notifier (= 2.3.12)
   pg
   rails (= 2.3.4)
