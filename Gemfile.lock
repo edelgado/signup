@@ -12,6 +12,10 @@ GEM
     activeresource (2.3.4)
       activesupport (= 2.3.4)
     activesupport (2.3.4)
+    builder (2.1.2)
+    hoptoad_notifier (2.3.12)
+      activesupport
+      builder
     pg (0.14.1)
     rack (1.0.1)
     rails (2.3.4)
@@ -28,5 +32,6 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.2)
+  hoptoad_notifier (= 2.3.12)
   pg
   rails (= 2.3.4)
