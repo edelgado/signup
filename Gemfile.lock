@@ -12,10 +12,7 @@ GEM
     activeresource (2.3.4)
       activesupport (= 2.3.4)
     activesupport (2.3.4)
-    builder (2.1.2)
-    hoptoad_notifier (2.3.12)
-      activesupport
-      builder
+    pg (0.14.1)
     rack (1.0.1)
     rails (2.3.4)
       actionmailer (= 2.3.4)
@@ -25,13 +22,11 @@ GEM
       activesupport (= 2.3.4)
       rake (>= 0.8.3)
     rake (0.8.7)
-    sqlite3-ruby (1.2.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   RedCloth (= 4.2.2)
-  hoptoad_notifier (= 2.3.12)
+  pg
   rails (= 2.3.4)
-  sqlite3-ruby (= 1.2.5)
